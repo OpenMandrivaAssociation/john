@@ -11,6 +11,7 @@ Group:      Monitoring
 Source:     http://www.openwall.com/john/f/%{name}-%{version}.tar.bz2
 Patch:      john-1.7.2-fhs.patch
 URL:        http://www.openwall.com/john/
+BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
 John the Ripper is a fast password cracker, currently available for many
