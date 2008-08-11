@@ -1,6 +1,6 @@
 %define name    john
-%define version 1.7.2
-%define release %mkrel 6
+%define version 1.7.3.1
+%define release %mkrel 1
 
 Name:       %{name}
 Version:    %{version}
@@ -8,9 +8,9 @@ Release:    %{release}
 Summary:    John the Ripper password cracker
 License:    GPL
 Group:      Monitoring
-Source:     http://www.openwall.com/john/f/%{name}-%{version}.tar.bz2
+URL:        http://www.openwall.com/john
+Source:     http://www.openwall.com/john/g/%{name}-%{version}.tar.bz2
 Patch:      john-1.7.2-fhs.patch
-URL:        http://www.openwall.com/john/
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
