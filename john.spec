@@ -1,6 +1,6 @@
 %define name    john
 %define version 1.7.3.1
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name:       %{name}
 Version:    %{version}
@@ -10,7 +10,8 @@ License:    GPL
 Group:      Monitoring
 URL:        http://www.openwall.com/john
 Source:     http://www.openwall.com/john/g/%{name}-%{version}.tar.bz2
-Patch:      john-1.7.2-fhs.patch
+Patch0:     john-1.7.2-fhs.patch
+Patch1:     john-1.7.3.1-fix-format-errors.patch
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
@@ -26,6 +27,7 @@ Build Options:
 %prep
 %setup -q
 %patch0 -p1 -b .fhs
+%patch1 -p1 -b .format
 chmod 644 doc/*
 
 %build
