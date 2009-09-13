@@ -1,6 +1,6 @@
 %define name    john
 %define version 1.7.3.1
-%define release %mkrel 2
+%define release %mkrel 3
 
 Name:       %{name}
 Version:    %{version}
@@ -12,6 +12,7 @@ URL:        http://www.openwall.com/john
 Source:     http://www.openwall.com/john/g/%{name}-%{version}.tar.bz2
 Patch0:     john-1.7.2-fhs.patch
 Patch1:     john-1.7.3.1-fix-format-errors.patch
+Patch2:     john-1.7.3.1-fhs-jumbo.patch
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
@@ -28,6 +29,7 @@ Build Options:
 %setup -q
 %patch0 -p1 -b .fhs
 %patch1 -p1 -b .format
+%patch2 -p1 -b .jumbo
 chmod 644 doc/*
 
 %build
