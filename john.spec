@@ -13,6 +13,7 @@ Source:     http://www.openwall.com/john/g/%{name}-%{version}.tar.bz2
 Patch0:     john-1.7.2-fhs.patch
 Patch1:     john-1.7.3.1-fix-format-errors.patch
 Patch2:     john-1.7.3.1-fhs-jumbo.patch
+BuildRequires: openssl-devel
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
