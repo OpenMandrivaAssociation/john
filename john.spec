@@ -1,5 +1,5 @@
 %define name    john
-%define version 1.7.4.2
+%define version 1.7.5
 %define release %mkrel 1
 
 Name:       %{name}
