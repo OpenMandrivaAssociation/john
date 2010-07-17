@@ -1,6 +1,6 @@
 %define name    john
-%define version 1.7.5
-%define release %mkrel 2
+%define version 1.7.6
+%define release %mkrel 1
 
 Name:       %{name}
 Version:    %{version}
@@ -10,7 +10,7 @@ License:    GPL
 Group:      Monitoring
 URL:        http://www.openwall.com/john
 Source:     http://www.openwall.com/john/g/%{name}-%{version}.tar.bz2
-Patch0:     http://www.openwall.com/john/contrib/%{name}-%{version}-jumbo-1.diff.gz
+Patch0:     http://www.openwall.com/john/contrib/%{name}-%{version}-jumbo-5.diff.gz
 Patch1:     john-1.7.3.4-fhs.patch
 BuildRequires: openssl-devel
 BuildRoot:  %{_tmppath}/%{name}-%{version}
