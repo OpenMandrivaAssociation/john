@@ -1,5 +1,5 @@
 %define name    john
-%define version 1.7.6
+%define version 1.7.7
 %define release %mkrel 1
 
 Name:       %{name}
@@ -9,8 +9,9 @@ Summary:    John the Ripper password cracker
 License:    GPL
 Group:      Monitoring
 URL:        http://www.openwall.com/john
-Source:     http://www.openwall.com/john/g/%{name}-%{version}.tar.bz2
-Patch0:     http://www.openwall.com/john/contrib/%{name}-%{version}-jumbo-5.diff.gz
+#Source:     http://www.openwall.com/john/g/%{name}-%{version}.tar.bz2
+#Patch0:     http://www.openwall.com/john/contrib/%{name}-%{version}-jumbo-6.tar.bz2
+Source:     http://www.openwall.com/john/contrib/%{name}-%{version}-jumbo-6.tar.bz2
 Patch1:     john-1.7.3.4-fhs.patch
 BuildRequires: openssl-devel
 BuildRoot:  %{_tmppath}/%{name}-%{version}
@@ -26,8 +27,8 @@ Build Options:
 --define 'extra_cflags <cflags>'    Provide additional cflags
 
 %prep
-%setup -q
-%patch0 -p1 -b .jumbo
+%setup -q -n %{name}-%{version}-jumbo-6
+#patch0 -p1 -b .jumbo
 %patch1 -p1 -b .fhs
 chmod 644 doc/*
 
