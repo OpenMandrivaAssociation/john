@@ -1,6 +1,6 @@
 %define name    john
-%define version 1.7.8
-%define release %mkrel 1
+%define version 1.7.9
+%define release 1
 
 Name:       %{name}
 Version:    %{version}
@@ -9,12 +9,11 @@ Summary:    John the Ripper password cracker
 License:    GPL
 Group:      Monitoring
 URL:        http://www.openwall.com/john
-Source:     http://www.openwall.com/john/g/%{name}-%{version}.tar.gz
+Source0:     http://www.openwall.com/john/g/%{name}-%{version}.tar.gz
 #Patch0:     http://www.openwall.com/john/contrib/%{name}-%{version}-jumbo-6.tar.bz2
 #Source:     http://www.openwall.com/john/contrib/%{name}-%{version}-jumbo-6.tar.bz2
 Patch1:     john-1.7.8-fhs.patch
 BuildRequires: openssl-devel
-BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
 John the Ripper is a fast password cracker, currently available for many
@@ -28,7 +27,6 @@ Build Options:
 
 %prep
 %setup -q -n %{name}-%{version}
-#patch0 -p1 -b .jumbo
 %patch1 -p1 -b .fhs
 chmod 644 doc/*
 
@@ -65,7 +63,6 @@ cd src
 %make $TARGET CFLAGS="-c -Wall %{optflags} %{?extra_cflags:%extra_cflags}"
 
 %install
-rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_bindir} \
          %{buildroot}%{_datadir}/%{name} \
          %{buildroot}%{_sysconfdir}
@@ -80,11 +77,7 @@ pushd %{buildroot}%{_bindir}
   ln -s john unshadow
 popd
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc doc/*
 %config(noreplace) %{_sysconfdir}/john.conf
 %{_bindir}/*
