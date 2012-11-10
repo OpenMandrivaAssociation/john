@@ -1,0 +1,77 @@
+--- john-1.7.8/run/john.conf.cfg	2011-10-18 10:59:28.000000000 -0200
++++ john-1.7.8/run/john.conf	2011-10-18 11:03:54.000000000 -0200
+@@ -5,7 +5,7 @@
+ 
+ [Options]
+ # Wordlist file name, to be used in batch mode
+-Wordlist = $JOHN/password.lst
++Wordlist = /usr/share/john/password.lst
+ # Use idle cycles only
+ Idle = Y
+ # Crash recovery file saving delay in seconds
+@@ -276,31 +276,31 @@ l Az"19[6-0][9-0]" <+
+ 
+ # Incremental modes
+ [Incremental:All]
+-File = $JOHN/all.chr
++File = /usr/share/john/all.chr
+ MinLen = 0
+ MaxLen = 8
+ CharCount = 95
+ 
+ [Incremental:Alpha]
+-File = $JOHN/alpha.chr
++File = /usr/share/john/alpha.chr
+ MinLen = 1
+ MaxLen = 8
+ CharCount = 26
+ 
+ [Incremental:Digits]
+-File = $JOHN/digits.chr
++File = /usr/share/john/digits.chr
+ MinLen = 1
+ MaxLen = 8
+ CharCount = 10
+ 
+ [Incremental:Alnum]
+-File = $JOHN/alnum.chr
++File = /usr/share/john/alnum.chr
+ MinLen = 1
+ MaxLen = 8
+ CharCount = 36
+ 
+ [Incremental:LanMan]
+-File = $JOHN/lanman.chr
++File = /usr/share/john/lanman.chr
+ MinLen = 0
+ MaxLen = 7
+ CharCount = 69
+--- john-1.7.8/src/params.h.cfg	2011-10-17 17:51:22.000000000 -0200
++++ john-1.7.8/src/params.h	2011-10-17 17:53:51.000000000 -0200
+@@ -56,7 +56,7 @@
+ 
+ #if JOHN_SYSTEMWIDE
+ #ifndef JOHN_SYSTEMWIDE_EXEC /* please refer to the notes above */
+-#define JOHN_SYSTEMWIDE_EXEC		"/usr/libexec/john"
++#define JOHN_SYSTEMWIDE_EXEC		"/usr/john"
+ #endif
+ #ifndef JOHN_SYSTEMWIDE_HOME
+ #define JOHN_SYSTEMWIDE_HOME		"/usr/share/john"
+@@ -103,7 +103,7 @@
+ /*
+  * File names.
+  */
+-#define CFG_FULL_NAME			"$JOHN/john.conf"
++#define CFG_FULL_NAME			"/etc/john.conf"
+ #define CFG_ALT_NAME			"$JOHN/john.ini"
+ #if JOHN_SYSTEMWIDE
+ #define CFG_PRIVATE_FULL_NAME		JOHN_PRIVATE_HOME "/john.conf"
+@@ -118,7 +118,7 @@
+ #endif
+ #define LOG_SUFFIX			".log"
+ #define RECOVERY_SUFFIX			".rec"
+-#define WORDLIST_NAME			"$JOHN/password.lst"
++#define WORDLIST_NAME			"/usr/share/john/password.lst"
+ 
+ /*
+  * Configuration file section names.
