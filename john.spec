@@ -1,11 +1,11 @@
 Summary:	John the Ripper password cracker
 Name:		john
-Version:	1.8.0
-Release:	3
+Version:	1.9.0
+Release:	1
 License:	GPLv2+
 Group:		Monitoring
 Url:		http://www.openwall.com/john
-Source0:	http://www.openwall.com/john/g/%{name}-%{version}.tar.xz
+Source0:	https://www.openwall.com/john/k/%{name}-%{version}-jumbo-1.tar.gz
 BuildRequires:	pkgconfig(openssl)
 
 %description
@@ -24,33 +24,12 @@ well.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
-chmod 0644 doc/*
-
-find . -perm 0600 | xargs chmod 0644
+%setup -qn %{name}-%{version}-jumbo-1
 
 %build
-TARGET=""
-%ifarch %{ix86}
-    %ifarch i686
-    TARGET=linux-x86-mmx
-    %else
-    TARGET=linux-x86-any
-    %endif
-%else
-    %ifarch x86_64
-    TARGET=linux-x86-64
-    %endif
-%endif
-
-if test -z "$TARGET"; then
-    TARGET=generic
-    export TARGET
-    echo "Please add the right TARGET to the spec file"
-fi
-
 cd src
-%make $TARGET CFLAGS="-c -Wall %{optflags} -DJOHN_SYSTEMWIDE=1" LDFLAGS="%{ldflags}"
+%configure
+%make
 
 %install
 mkdir -p %{buildroot}%{_bindir} \
