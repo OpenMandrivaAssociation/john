@@ -4,7 +4,7 @@ Version:	1.9.0
 Release:	1
 License:	GPLv2+
 Group:		Monitoring
-Url:		http://www.openwall.com/john
+Url:		https://www.openwall.com/john
 Source0:	https://www.openwall.com/john/k/%{name}-%{version}-jumbo-1.tar.gz
 BuildRequires:	pkgconfig(openssl)
 
@@ -24,12 +24,12 @@ well.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -qn %{name}-%{version}-jumbo-1
+%autosetup -p1 -n %{name}-%{version}-jumbo-1
 
 %build
 cd src
 %configure
-%make
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_bindir} \
