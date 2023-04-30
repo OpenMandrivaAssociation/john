@@ -1,7 +1,7 @@
 Summary:	John the Ripper password cracker
 Name:		john
 Version:	1.9.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Monitoring
 Url:		https://www.openwall.com/john
@@ -29,7 +29,9 @@ well.
 %build
 cd src
 %configure
-%make_build
+%make_build \
+	CFLAGS="-c -Wall %{optflags} -DJOHN_SYSTEMWIDE=1" \
+	LDFLAGS="%{ldflags}"
 
 %install
 mkdir -p %{buildroot}%{_bindir} \
