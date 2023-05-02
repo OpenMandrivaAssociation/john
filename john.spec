@@ -6,9 +6,10 @@ License:	GPLv2+
 Group:		Monitoring
 Url:		https://www.openwall.com/john
 Source0:	https://www.openwall.com/john/k/%{name}-%{version}-jumbo-1.tar.gz
-BuildRequires:	pkgconfig(openssl)
 # (upstream) https://github.com/openwall/john/issues/4604
 Patch0:		john-1.9.0-build_with_gcc11.patch
+BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(zlib)
 
 %description
 John the Ripper is a fast password cracker, currently available for many
