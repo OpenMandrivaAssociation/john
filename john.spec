@@ -8,6 +8,11 @@ Url:		https://www.openwall.com/john
 Source0:	https://www.openwall.com/john/k/%{name}-%{version}-jumbo-1.tar.gz
 # (upstream) https://github.com/openwall/john/issues/4604
 Patch0:		john-1.9.0-build_with_gcc11.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(zlib)
 
